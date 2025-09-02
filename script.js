@@ -6,7 +6,7 @@ const cartTotal = document.getElementById("cart-value")
 const checkoutBtn = document.getElementById("finish")         
 const closeModalBtn = document.getElementById("close-modal")   
 const cartCounter = document.getElementById("cart")            
-const addressInput = document.getElementById("Endereço")       
+const addressInput = document.getElementById("edress")       
 const addressWarn = document.getElementById("error-address")   
 
 let cart = [];
@@ -82,7 +82,7 @@ function updateCartModal() {
           <p class= "font-bold mt-2">R$ ${item.price.toFixed(2)}</p>
         </div>
         <div>
-          <button>
+          <button  class = "remove-from-cart-btn" data-name="${item.name}" >
             Remover
           </button>
         </div>
@@ -99,6 +99,73 @@ cartTotal.textContent = total.toLocaleString("pt-BR",{
   currency:"BRL"
 });
 
+cartCounter.innerText= cart.length;
+
 }
 
 
+
+// Função para remover o item do carrinho
+cartItemsContainer.addEventListener("click", function(event){
+    if(event.target.classList.contains("remove-from-cart-btn")){
+        const name = event.target.getAttribute("data-name");
+        removeItemCart(name);
+    }
+});
+
+
+function removeItemCart(name){
+    const index = cart.findIndex(item => item.name === name);
+
+    if(index !== -1){
+        const item = cart[index];
+
+        if(item.quantity > 1){
+            item.quantity -= 1;
+            updateCartModal();
+            return;
+        }
+        
+        cart.splice(index, 1);
+        updateCartModal();
+    }
+
+
+}
+
+
+addressInput.addEventListener("input",function(event){
+  let inputvalue  = event.target.value;
+
+  if (inputvalue !== ""){
+    addressInput.classList.remove("border-red-500")
+    addressWarn.classList.add("hidden")
+  }
+
+})
+
+checkoutBtn.addEventListener("click", function(){
+  if(cart.length === 0) return;
+  if(addressInput.value === ""){
+    addressWarn.classList.remove("hidden")
+    addressInput.classList.add("border-red-500")
+    return;
+  }
+})
+
+function checkrestaurantOpen(){
+  const data = new Date();
+  const hour = data.getHours();
+  return hora >= 18 && hora <22;
+}
+
+const spanIten = document.getElementById("data-span")
+const isOpen = checkrestaurantOpen();
+
+if  (isOpen){
+  spanIten.classList.remove("bg-red-500");
+  spanIten.classList.add("bg-green-600")
+}else{
+  spanIten.classList.remove("bg-green-600")
+  spanIten.classList.add("bg-red-500")
+}
