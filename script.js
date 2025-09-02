@@ -93,4 +93,12 @@ function updateCartModal() {
 
     cartItemsContainer.appendChild(cartItemElement);
   });
+
+cartTotal.textContent = total.toLocaleString("pt-BR",{
+  style:"currency",
+  currency:"BRL"
+});
+
 }
+
+
