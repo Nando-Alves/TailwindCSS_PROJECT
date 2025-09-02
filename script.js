@@ -151,6 +151,20 @@ checkoutBtn.addEventListener("click", function(){
     addressInput.classList.add("border-red-500")
     return;
   }
+// Enviar o pedido para api whats
+const cartItems = cart.map((item) => {
+  return (
+    `* ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price}`
+  );
+}).join("\n");
+
+const message = encodeURIComponent(cartItems);
+const phone = "+5585996539372";
+
+window.open(`https://wa.me/${phone}?text=${message}\n\nEndereço: ${addressInput.value}`, '_blank');
+
+cart= [];
+updateCartModal();
 })
 
 function checkrestaurantOpen(){
