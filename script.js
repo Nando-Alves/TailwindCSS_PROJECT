@@ -30,7 +30,7 @@ closeModalBtn.addEventListener("click", () => {
 menu.addEventListener("click", function(event){
 
     let parenButton = event.target.closest(".add-to-cart-btn")
-    console.log(parenButton);
+    
     
     if(parenButton){
         const name = parenButton.getAttribute("data-name")
@@ -47,6 +47,11 @@ menu.addEventListener("click", function(event){
 
 
 function addToCart(name,price){
+    const duplicate = cart.find(item => item.name === name) 
+    if(duplicate){
+      duplicate.quantity += 1;
+      return;
+    } 
     cart.push({
         name,
         price,
