@@ -25,7 +25,6 @@ Abra o projeto no navegador abrindo o arquivo index.html.
 ```
 npm run dev: compila o Tailwind em modo watch (desenvolvimento).
 
-npm run build: gera o CSS minificado para produção.
 
 ✨ Funcionalidades
 Exibição do cardápio de hambúrgueres e bebidas.
