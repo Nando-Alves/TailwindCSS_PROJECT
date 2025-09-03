@@ -5,25 +5,6 @@ O objetivo é permitir que os clientes visualizem o cardápio, adicionem itens a
 
 ---
 
-## 📂 Estrutura do Projeto
-
-.
-├── assets/ # Imagens de produtos (hambúrgueres, bebidas, etc.)
-├── node_modules/ # Dependências instaladas pelo npm
-├── styles/
-│ ├── output.css # Arquivo gerado pelo Tailwind
-│ └── style.css # Estilos adicionais (se necessário)
-├── index.html # Estrutura principal do site
-├── script.js # Lógica do carrinho e integração com WhatsApp
-├── package.json # Configurações do projeto
-├── package-lock.json # Controle de dependências
-└── tailwind.config.js # Configuração do Tailwind
-
-yaml
-Copiar código
-
----
-
 ## 🚀 Como rodar o projeto
 
 1) **Clone o repositório** (ou copie os arquivos):
